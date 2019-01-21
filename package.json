@@ -4,5 +4,12 @@
   "description": "An example JupiterOne managed integration.",
   "main": "index.js",
   "repository": "https://github.com/jupiterone-io/managed-integration-example",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@jupiterone/jupiter-managed-integration-sdk": "file:jupiterone-jupiter-managed-integration-sdk-v15.1.0.tgz",
+    "aws-sdk": "2.290"
+  },
+  "devDependencies": {
+    "typescript": "3.2.4"
+  }
 }
