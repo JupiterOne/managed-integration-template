@@ -1,1 +1,1 @@
-# JupiterOne Integration Example
+# JupiterOne Managed Integration Example
