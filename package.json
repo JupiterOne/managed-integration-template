@@ -5,11 +5,17 @@
   "main": "index.js",
   "repository": "https://github.com/jupiterone-io/managed-integration-example",
   "license": "MIT",
+  "scripts": {
+    "start": "ts-node execute.ts"
+  },
   "dependencies": {
-    "@jupiterone/jupiter-managed-integration-sdk": "file:jupiterone-jupiter-managed-integration-sdk-v15.1.0.tgz",
+    "@jupiterone/jupiter-managed-integration-sdk": "file:jupiterone-jupiter-managed-integration-sdk-v15.1.1.tgz",
     "aws-sdk": "2.290"
   },
   "devDependencies": {
+    "@types/bunyan": "^1.8.5",
+    "bunyan": "^1.8.12",
+    "ts-node": "^8.0.1",
     "typescript": "3.2.4"
   }
 }
