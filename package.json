@@ -9,7 +9,7 @@
     "start": "ts-node execute.ts"
   },
   "dependencies": {
-    "@jupiterone/jupiter-managed-integration-sdk": "file:jupiterone-jupiter-managed-integration-sdk-v15.1.1.tgz",
+    "@jupiterone/jupiter-managed-integration-sdk": "file:jupiterone-jupiter-managed-integration-sdk-v15.2.0.tgz",
     "aws-sdk": "2.290"
   },
   "devDependencies": {
