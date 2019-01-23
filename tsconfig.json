@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "outDir": "build",
     "noUnusedLocals": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
@@ -11,8 +12,8 @@
     "allowJs": false,
     "moduleResolution": "node",
     "target": "ESNext",
+    "module": "commonjs",
     "pretty": true,
-    "inlineSourceMap": true,
-    "inlineSources": true
+    "inlineSourceMap": true
   }
 }
