@@ -7,7 +7,10 @@ import executionHandler from './index';
 
 async function run(): Promise<void> {
   const logger = createLogger({ name: 'local', level: TRACE });
-  const integrationConfig = {};
+
+  const integrationConfig = {
+    // providerApiToken: process.env.PROVIDER_LOCAL_EXECUTION_API_TOKEN
+  };
 
   logger.info(
     await executeSingleHandlerLocal(
