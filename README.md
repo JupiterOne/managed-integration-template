@@ -37,9 +37,10 @@ provider. Developing an integration involves:
 This example integration hand waves 1 and 2a 🤪. The rest of it is serious
 business. Run the integration to see what happens:
 
-1.  `yarn install`
-2.  `yarn start:graph`
-3.  `yarn start`
+1.  Install Docker
+2.  `yarn install`
+3.  `yarn start:graph`
+4.  `yarn start`
 
 Activity is logged to the console indicating the operations produced and
 processed. View raw data in the graph database using
@@ -47,6 +48,12 @@ processed. View raw data in the graph database using
 
 Execute the integration again to see that there are no change operations
 produced.
+
+Restart the graph server to clear the data when you want to run the integration
+with no existing data:
+
+1.  `yarn stop:graph`
+2.  `yarn start:graph`
 
 ### Running tests
 
