@@ -14,10 +14,10 @@
     "bunyan": "^1.8.12"
   },
   "peerDependencies": {
-    "@jupiterone/jupiter-managed-integration-sdk": "^15.4.0"
+    "@jupiterone/jupiter-managed-integration-sdk": "^15.4.1"
   },
   "devDependencies": {
-    "@jupiterone/jupiter-managed-integration-sdk": "file:jupiterone-jupiter-managed-integration-sdk-v15.4.0.tgz",
+    "@jupiterone/jupiter-managed-integration-sdk": "file:jupiterone-jupiter-managed-integration-sdk-v15.4.1.tgz",
     "@types/bunyan": "^1.8.5",
     "ts-node": "^8.0.1",
     "typescript": "3.2.4"

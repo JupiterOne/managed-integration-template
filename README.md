@@ -55,6 +55,10 @@ with no existing data:
 1.  `yarn stop:graph`
 2.  `yarn start:graph`
 
+### Environment Variables
+
+* `GRAPH_DB_ENDPOINT` - `"localhost"`
+
 ### Running tests
 
 All tests must be written using Jest. Focus on testing provider API interactions

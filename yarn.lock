@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@jupiterone/jupiter-managed-integration-sdk@file:jupiterone-jupiter-managed-integration-sdk-v15.4.0.tgz":
-  version "15.4.0"
-  resolved "file:jupiterone-jupiter-managed-integration-sdk-v15.4.0.tgz#8a1bdb245e97d2218fb717adbedfdb4004326471"
+"@jupiterone/jupiter-managed-integration-sdk@file:jupiterone-jupiter-managed-integration-sdk-v15.4.1.tgz":
+  version "15.4.1"
+  resolved "file:jupiterone-jupiter-managed-integration-sdk-v15.4.1.tgz#1df5f790e9261e58c8cd7b7775acc2ca05517798"
 
 "@types/bunyan@^1.8.5":
   version "1.8.5"
