@@ -1,26 +1,15 @@
-import { User, Device } from './provider';
+import { RelationshipFromIntegration } from '@jupiterone/jupiter-managed-integration-sdk';
+import { Device, User } from './ProviderClient';
 import {
-  EntityFromIntegration,
-  RelationshipFromIntegration
-} from '@jupiterone/jupiter-managed-integration-sdk';
-
-export const USER_ENTITY_TYPE = 'provider_user';
-export const USER_ENTITY_CLASS = 'User';
-
-export const DEVICE_ENTITY_TYPE = 'provider_device';
-export const DEVICE_ENTITY_CLASS = 'Device';
-
-export const USER_DEVICE_RELATIONSHIP_TYPE = 'provider_user_device';
-export const USER_DEVICE_RELATIONSHIP_CLASS = 'HAS';
-
-export interface UserEntity extends EntityFromIntegration {
-  userId: string;
-}
-
-export interface DeviceEntity extends EntityFromIntegration {
-  deviceId: string;
-  ownerId: string;
-}
+  DEVICE_ENTITY_CLASS,
+  DEVICE_ENTITY_TYPE,
+  DeviceEntity,
+  USER_DEVICE_RELATIONSHIP_CLASS,
+  USER_DEVICE_RELATIONSHIP_TYPE,
+  USER_ENTITY_CLASS,
+  USER_ENTITY_TYPE,
+  UserEntity
+} from './types';
 
 export function createUserEntities(data: User[]): UserEntity[] {
   return data.map(d => ({
