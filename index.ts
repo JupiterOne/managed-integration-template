@@ -6,19 +6,22 @@ import {
 import {
   createDeviceEntities,
   createUserDeviceRelationships,
-  createUserEntities,
+  createUserEntities
+} from './converters';
+import initializeContext from './initializeContext';
+import ProviderClient from './ProviderClient';
+import {
   DEVICE_ENTITY_TYPE,
   DeviceEntity,
   USER_DEVICE_RELATIONSHIP_TYPE,
   USER_ENTITY_TYPE,
   UserEntity
-} from './converters';
-import * as provider from './provider';
+} from './types';
 
 export default async function executionHandler(
   context: IntegrationExecutionContext<IntegrationInvocationEvent>
 ): Promise<IntegrationExecutionResult> {
-  const { graph, persister } = context.clients.getClients();
+  const { graph, persister, provider } = initializeContext(context);
 
   const [
     oldUserEntities,
@@ -30,8 +33,8 @@ export default async function executionHandler(
     graph.findEntitiesByType<UserEntity>(USER_ENTITY_TYPE),
     graph.findEntitiesByType<DeviceEntity>(DEVICE_ENTITY_TYPE),
     graph.findRelationshipsByType(USER_DEVICE_RELATIONSHIP_TYPE),
-    fetchUserEntitiesFromProvider(),
-    fetchDeviceEntitiesFromProvider()
+    fetchUserEntitiesFromProvider(provider),
+    fetchDeviceEntitiesFromProvider(provider)
   ]);
 
   const newUserDeviceRelationships = createUserDeviceRelationships(
@@ -53,10 +56,14 @@ export default async function executionHandler(
   };
 }
 
-async function fetchUserEntitiesFromProvider(): Promise<UserEntity[]> {
+async function fetchUserEntitiesFromProvider(
+  provider: ProviderClient
+): Promise<UserEntity[]> {
   return createUserEntities(await provider.fetchUsers());
 }
 
-async function fetchDeviceEntitiesFromProvider(): Promise<DeviceEntity[]> {
+async function fetchDeviceEntitiesFromProvider(
+  provider: ProviderClient
+): Promise<DeviceEntity[]> {
   return createDeviceEntities(await provider.fetchDevices());
 }

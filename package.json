@@ -8,7 +8,8 @@
   "scripts": {
     "start": "ts-node execute.ts | bunyan",
     "start:graph": "docker run -d --rm --name jupiterone-local-graph -p 8182:8182 tinkerpop/gremlin-server:3.3",
-    "stop:graph": "docker stop jupiterone-local-graph"
+    "stop:graph": "docker stop jupiterone-local-graph",
+    "test": "jest"
   },
   "dependencies": {
     "bunyan": "^1.8.12"
@@ -17,8 +18,14 @@
     "@jupiterone/jupiter-managed-integration-sdk": "^15.4.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-typescript": "^7.1.0",
     "@jupiterone/jupiter-managed-integration-sdk": "file:jupiterone-jupiter-managed-integration-sdk-v15.4.1.tgz",
     "@types/bunyan": "^1.8.5",
+    "@types/jest": "^23.3.13",
+    "babel-jest": "^24.0.0",
+    "jest": "^24.0.0",
     "ts-node": "^8.0.1",
     "typescript": "3.2.4"
   }
