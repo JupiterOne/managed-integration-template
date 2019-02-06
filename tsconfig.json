@@ -1,8 +1,8 @@
 {
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "tools/**/*"],
   "exclude": ["src/**/*.test.ts"],
   "compilerOptions": {
-    "outDir": "dist",
+    "outDir": "build",
     "noUnusedLocals": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,

@@ -6,8 +6,9 @@
   "repository": "https://github.com/jupiterone-io/managed-integration-example",
   "license": "SEE LICENSE IN LICENSE",
   "scripts": {
+    "prebuild": "rm -Rf dist/*",
     "build": "babel src --extensions '.ts' --out-dir dist --ignore 'src/**/*.test.ts'",
-    "build:types": "tsc --project tsconfig.json --declaration --emitDeclarationOnly",
+    "build:types": "tsc --project tsconfig.dist.json --declaration --emitDeclarationOnly",
     "build:files": "ts-node tools/copy-dist-files.ts",
     "postbuild": "yarn build:types && yarn build:files",
     "start": "ts-node tools/execute.ts | bunyan",
