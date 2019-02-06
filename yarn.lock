@@ -615,9 +615,9 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
-"@jupiterone/jupiter-managed-integration-sdk@file:jupiterone-jupiter-managed-integration-sdk-v15.4.1.tgz":
-  version "15.4.1"
-  resolved "file:jupiterone-jupiter-managed-integration-sdk-v15.4.1.tgz#1df5f790e9261e58c8cd7b7775acc2ca05517798"
+"@jupiterone/jupiter-managed-integration-sdk@file:jupiterone-jupiter-managed-integration-sdk-v18.0.4.tgz":
+  version "18.0.4"
+  resolved "file:jupiterone-jupiter-managed-integration-sdk-v18.0.4.tgz#01ccdf8a2285b303476cdc984f824d2bc430dbff"
 
 "@types/bunyan@^1.8.5":
   version "1.8.5"
