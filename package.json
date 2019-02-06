@@ -6,14 +6,15 @@
   "repository": "https://github.com/jupiterone-io/managed-integration-example",
   "license": "SEE LICENSE IN LICENSE",
   "scripts": {
-    "prebuild": "rm -Rf dist/*",
-    "build": "babel src --extensions '.ts' --out-dir dist --ignore 'src/**/*.test.ts'",
-    "build:types": "tsc --project tsconfig.dist.json --declaration --emitDeclarationOnly",
-    "build:files": "ts-node tools/copy-dist-files.ts",
-    "postbuild": "yarn build:types && yarn build:files",
     "start": "ts-node tools/execute.ts | bunyan",
     "start:graph": "docker run -d --rm --name jupiterone-local-graph -p 8182:8182 tinkerpop/gremlin-server:3.3",
     "stop:graph": "docker stop jupiterone-local-graph",
+    "prebuild": "rm -rf dist/*",
+    "build": "yarn build:types && yarn build:src && yarn build:files",
+    "build:src": "babel src --extensions '.ts' --out-dir dist",
+    "build:files": "ts-node tools/copy-dist-files.ts",
+    "build:types": "tsc --project tsconfig.dist.json --declaration --emitDeclarationOnly",
+    "lint": "tslint --project .",
     "test": "jest"
   },
   "dependencies": {
@@ -29,10 +30,12 @@
     "@babel/preset-typescript": "^7.1.0",
     "@jupiterone/jupiter-managed-integration-sdk": "file:jupiterone-jupiter-managed-integration-sdk-v18.0.4.tgz",
     "@types/bunyan": "^1.8.5",
-    "@types/jest": "^23.3.13",
-    "babel-jest": "^24.0.0",
-    "jest": "^24.0.0",
-    "ts-node": "^8.0.1",
-    "typescript": "3.2.4"
+    "@types/jest": "^22.2.3",
+    "@types/node": "^10.12.20",
+    "jest": "^23.5.0",
+    "ts-jest": "^23.10.5",
+    "ts-lint": "^4.5.1",
+    "ts-node": "^8.0.2",
+    "typescript": "^3.3.1"
   }
 }
