@@ -6,7 +6,7 @@
   "repository": "https://github.com/jupiterone-io/managed-integration-example",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node execute.ts | bunyan",
+    "start": "ts-node src/execute.ts | bunyan",
     "start:graph": "docker run -d --rm --name jupiterone-local-graph -p 8182:8182 tinkerpop/gremlin-server:3.3",
     "stop:graph": "docker stop jupiterone-local-graph",
     "test": "jest"
