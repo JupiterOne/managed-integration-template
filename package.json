@@ -4,9 +4,13 @@
   "description": "An example JupiterOne managed integration.",
   "main": "index.js",
   "repository": "https://github.com/jupiterone-io/managed-integration-example",
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE",
   "scripts": {
-    "start": "ts-node src/execute.ts | bunyan",
+    "build": "babel src --extensions '.ts' --out-dir dist --ignore 'src/**/*.test.ts'",
+    "build:types": "tsc --project tsconfig.json --declaration --emitDeclarationOnly",
+    "build:files": "ts-node tools/copy-dist-files.ts",
+    "postbuild": "yarn build:types && yarn build:files",
+    "start": "ts-node tools/execute.ts | bunyan",
     "start:graph": "docker run -d --rm --name jupiterone-local-graph -p 8182:8182 tinkerpop/gremlin-server:3.3",
     "stop:graph": "docker stop jupiterone-local-graph",
     "test": "jest"
@@ -18,6 +22,7 @@
     "@jupiterone/jupiter-managed-integration-sdk": "^18.0.4"
   },
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-typescript": "^7.1.0",

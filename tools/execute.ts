@@ -3,7 +3,7 @@ import {
   executeSingleHandlerLocal
 } from '@jupiterone/jupiter-managed-integration-sdk';
 import { createLogger, TRACE } from 'bunyan';
-import executionHandler from './index';
+import executionHandler from '../src/index';
 
 async function run(): Promise<void> {
   const logger = createLogger({ name: 'local', level: TRACE });
