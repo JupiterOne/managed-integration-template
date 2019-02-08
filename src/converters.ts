@@ -1,8 +1,8 @@
 import {
-  RelationshipFromIntegration,
-  EntityFromIntegration
-} from '@jupiterone/jupiter-managed-integration-sdk';
-import { Account, Device, User } from './ProviderClient';
+  EntityFromIntegration,
+  RelationshipFromIntegration
+} from "@jupiterone/jupiter-managed-integration-sdk";
+import { Account, Device, User } from "./ProviderClient";
 import {
   ACCOUNT_ENTITY_CLASS,
   ACCOUNT_ENTITY_TYPE,
@@ -15,13 +15,13 @@ import {
   USER_ENTITY_CLASS,
   USER_ENTITY_TYPE,
   UserEntity
-} from './types';
+} from "./types";
 
 export function createAccountEntity(data: Account): AccountEntity {
   return {
+    _class: ACCOUNT_ENTITY_CLASS,
     _key: `provider-account-${data.id}`,
     _type: ACCOUNT_ENTITY_TYPE,
-    _class: ACCOUNT_ENTITY_CLASS,
     accountId: data.id,
     displayName: data.name
   };
@@ -29,22 +29,22 @@ export function createAccountEntity(data: Account): AccountEntity {
 
 export function createUserEntities(data: User[]): UserEntity[] {
   return data.map(d => ({
+    _class: USER_ENTITY_CLASS,
     _key: `provider-user-${d.id}`,
     _type: USER_ENTITY_TYPE,
-    _class: USER_ENTITY_CLASS,
-    userId: d.id,
-    displayName: `${d.firstName} ${d.lastName}`
+    displayName: `${d.firstName} ${d.lastName}`,
+    userId: d.id
   }));
 }
 
 export function createDeviceEntities(data: Device[]): DeviceEntity[] {
   return data.map(d => ({
+    _class: DEVICE_ENTITY_CLASS,
     _key: `provider-device-id-${d.id}`,
     _type: DEVICE_ENTITY_TYPE,
-    _class: DEVICE_ENTITY_CLASS,
     deviceId: d.id,
-    ownerId: d.ownerId,
-    displayName: d.manufacturer
+    displayName: d.manufacturer,
+    ownerId: d.ownerId
   }));
 }
 
@@ -67,11 +67,11 @@ export function createAccountRelationship(
   type: string
 ): RelationshipFromIntegration {
   return {
-    _key: `${account._key}_has_${entity._key}`,
-    _type: type,
-    _class: 'HAS',
+    _class: "HAS",
     _fromEntityKey: account._key,
-    _toEntityKey: entity._key
+    _key: `${account._key}_has_${entity._key}`,
+    _toEntityKey: entity._key,
+    _type: type
   };
 }
 
@@ -98,10 +98,10 @@ function createUserDeviceRelationship(
   device: DeviceEntity
 ): RelationshipFromIntegration {
   return {
-    _key: `${user._key}_has_${device._key}`,
-    _type: USER_DEVICE_RELATIONSHIP_TYPE,
     _class: USER_DEVICE_RELATIONSHIP_CLASS,
     _fromEntityKey: user._key,
-    _toEntityKey: device._key
+    _key: `${user._key}_has_${device._key}`,
+    _toEntityKey: device._key,
+    _type: USER_DEVICE_RELATIONSHIP_TYPE
   };
 }

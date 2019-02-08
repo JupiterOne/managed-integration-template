@@ -2,16 +2,16 @@ import {
   IntegrationExecutionContext,
   IntegrationExecutionResult,
   IntegrationInvocationEvent
-} from '@jupiterone/jupiter-managed-integration-sdk';
+} from "@jupiterone/jupiter-managed-integration-sdk";
 import {
   createAccountEntity,
+  createAccountRelationships,
   createDeviceEntities,
   createUserDeviceRelationships,
-  createUserEntities,
-  createAccountRelationships
-} from './converters';
-import initializeContext from './initializeContext';
-import ProviderClient from './ProviderClient';
+  createUserEntities
+} from "./converters";
+import initializeContext from "./initializeContext";
+import ProviderClient from "./ProviderClient";
 import {
   ACCOUNT_DEVICE_RELATIONSHIP_TYPE,
   ACCOUNT_ENTITY_TYPE,
@@ -22,7 +22,7 @@ import {
   USER_DEVICE_RELATIONSHIP_TYPE,
   USER_ENTITY_TYPE,
   UserEntity
-} from './types';
+} from "./types";
 
 export default async function executionHandler(
   context: IntegrationExecutionContext<IntegrationInvocationEvent>

@@ -1,7 +1,7 @@
 import {
   IntegrationExecutionContext,
   IntegrationInvocationEvent
-} from '@jupiterone/jupiter-managed-integration-sdk';
+} from "@jupiterone/jupiter-managed-integration-sdk";
 
 /**
  * Performs validation of the execution before the execution handler function is
