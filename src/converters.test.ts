@@ -1,17 +1,25 @@
 import {
   createDeviceEntities,
   createUserDeviceRelationships,
-  createUserEntities
+  createUserEntities,
+  createAccountRelationships,
+  createAccountEntity
 } from './converters';
-import { Device, User } from './ProviderClient';
+import { Account, Device, User } from './ProviderClient';
 import {
   DEVICE_ENTITY_CLASS,
   DEVICE_ENTITY_TYPE,
   USER_DEVICE_RELATIONSHIP_CLASS,
   USER_DEVICE_RELATIONSHIP_TYPE,
   USER_ENTITY_CLASS,
-  USER_ENTITY_TYPE
+  USER_ENTITY_TYPE,
+  ACCOUNT_USER_RELATIONSHIP_TYPE
 } from './types';
+
+const account: Account = {
+  id: 'account-1',
+  name: 'account-name'
+};
 
 const users: User[] = [
   {
@@ -28,6 +36,27 @@ const devices: Device[] = [
     ownerId: 'user-1'
   }
 ];
+
+test('createAccountRelationships', () => {
+  const accountEntity = createAccountEntity(account);
+  const userEntities = createUserEntities(users);
+
+  expect(
+    createAccountRelationships(
+      accountEntity,
+      userEntities,
+      ACCOUNT_USER_RELATIONSHIP_TYPE
+    )
+  ).toEqual([
+    {
+      _key: 'provider-account-account-1_has_provider-user-user-1',
+      _type: ACCOUNT_USER_RELATIONSHIP_TYPE,
+      _class: 'HAS',
+      _fromEntityKey: 'provider-account-account-1',
+      _toEntityKey: 'provider-user-user-1'
+    }
+  ]);
+});
 
 test('createUserEntities', () => {
   expect(createUserEntities(users)).toEqual([

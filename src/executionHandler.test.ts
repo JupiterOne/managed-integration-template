@@ -2,7 +2,7 @@ import {
   IntegrationExecutionContext,
   IntegrationInvocationEvent
 } from '@jupiterone/jupiter-managed-integration-sdk';
-import executionHandler from './index';
+import executionHandler from './executionHandler';
 import initializeContext from './initializeContext';
 import { USER_ENTITY_TYPE, DEVICE_ENTITY_TYPE, USER_DEVICE_RELATIONSHIP_TYPE } from './types';
 
@@ -20,6 +20,7 @@ test('executionHandler', async () => {
       publishPersisterOperations: jest.fn().mockResolvedValue({})
     },
     provider: {
+      fetchAccountDetails: jest.fn().mockResolvedValue({}),
       fetchUsers: jest.fn().mockResolvedValue([]),
       fetchDevices: jest.fn().mockResolvedValue([])
     }
@@ -38,7 +39,7 @@ test('executionHandler', async () => {
   expect(executionContext.provider.fetchUsers).toHaveBeenCalledTimes(1);
   expect(executionContext.provider.fetchDevices).toHaveBeenCalledTimes(1);
 
-  expect(executionContext.persister.processEntities).toHaveBeenCalledTimes(2);
-  expect(executionContext.persister.processRelationships).toHaveBeenCalledTimes(1);
+  expect(executionContext.persister.processEntities).toHaveBeenCalledTimes(3);
+  expect(executionContext.persister.processRelationships).toHaveBeenCalledTimes(2);
   expect(executionContext.persister.publishPersisterOperations).toHaveBeenCalledTimes(1);
 });

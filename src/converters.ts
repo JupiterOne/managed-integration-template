@@ -1,6 +1,12 @@
-import { RelationshipFromIntegration } from '@jupiterone/jupiter-managed-integration-sdk';
-import { Device, User } from './ProviderClient';
 import {
+  RelationshipFromIntegration,
+  EntityFromIntegration
+} from '@jupiterone/jupiter-managed-integration-sdk';
+import { Account, Device, User } from './ProviderClient';
+import {
+  ACCOUNT_ENTITY_CLASS,
+  ACCOUNT_ENTITY_TYPE,
+  AccountEntity,
   DEVICE_ENTITY_CLASS,
   DEVICE_ENTITY_TYPE,
   DeviceEntity,
@@ -10,6 +16,16 @@ import {
   USER_ENTITY_TYPE,
   UserEntity
 } from './types';
+
+export function createAccountEntity(data: Account): AccountEntity {
+  return {
+    _key: `provider-account-${data.id}`,
+    _type: ACCOUNT_ENTITY_TYPE,
+    _class: ACCOUNT_ENTITY_CLASS,
+    accountId: data.id,
+    displayName: data.name
+  };
+}
 
 export function createUserEntities(data: User[]): UserEntity[] {
   return data.map(d => ({
@@ -30,6 +46,33 @@ export function createDeviceEntities(data: Device[]): DeviceEntity[] {
     ownerId: d.ownerId,
     displayName: d.manufacturer
   }));
+}
+
+export function createAccountRelationships(
+  account: AccountEntity,
+  entities: EntityFromIntegration[],
+  type: string
+) {
+  const relationships = [];
+  for (const entity of entities) {
+    relationships.push(createAccountRelationship(account, entity, type));
+  }
+
+  return relationships;
+}
+
+export function createAccountRelationship(
+  account: AccountEntity,
+  entity: EntityFromIntegration,
+  type: string
+): RelationshipFromIntegration {
+  return {
+    _key: `${account._key}_has_${entity._key}`,
+    _type: type,
+    _class: 'HAS',
+    _fromEntityKey: account._key,
+    _toEntityKey: entity._key
+  };
 }
 
 export function createUserDeviceRelationships(

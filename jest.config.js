@@ -8,7 +8,7 @@ module.exports = {
   collectCoverageFrom: ['src/**/*.ts'],
   coveragePathIgnorePatterns: [
     '<rootDir>/src/index.ts',
-    '<rootDir>/src/executionHandler.ts',
+    '<rootDir>/src/ProviderClient.ts',
   ],
   moduleFileExtensions: ['ts', 'js'],
   testEnvironment: 'node',

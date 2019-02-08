@@ -1,3 +1,8 @@
+export interface Account {
+  id: string;
+  name: string;
+}
+
 export interface User {
   id: string;
   firstName: string;
@@ -11,6 +16,13 @@ export interface Device {
 }
 
 export default class ProviderClient {
+  async fetchAccountDetails(): Promise<Account> {
+    return {
+      id: 'account-a',
+      name: 'Account A'
+    };
+  }
+
   async fetchDevices(): Promise<Device[]> {
     return [
       {
@@ -40,4 +52,4 @@ export default class ProviderClient {
       }
     ];
   }
-};
+}
