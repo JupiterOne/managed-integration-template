@@ -1,6 +1,6 @@
 import {
   IntegrationExecutionContext,
-  IntegrationInvocationEvent
+  IntegrationInvocationEvent,
 } from "@jupiterone/jupiter-managed-integration-sdk";
 
 /**
@@ -15,7 +15,7 @@ import {
  * @param executionContext
  */
 export default async function invocationValidator(
-  executionContext: IntegrationExecutionContext<IntegrationInvocationEvent>
+  executionContext: IntegrationExecutionContext<IntegrationInvocationEvent>,
 ) {
   // const { config } = executionContext.instance;
   // if (!config.providerAPIKey) {

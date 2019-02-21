@@ -1,6 +1,6 @@
 import {
   EntityFromIntegration,
-  RelationshipFromIntegration
+  RelationshipFromIntegration,
 } from "@jupiterone/jupiter-managed-integration-sdk";
 import { Account, Device, User } from "./ProviderClient";
 import {
@@ -14,7 +14,7 @@ import {
   USER_DEVICE_RELATIONSHIP_TYPE,
   USER_ENTITY_CLASS,
   USER_ENTITY_TYPE,
-  UserEntity
+  UserEntity,
 } from "./types";
 
 export function createAccountEntity(data: Account): AccountEntity {
@@ -23,7 +23,7 @@ export function createAccountEntity(data: Account): AccountEntity {
     _key: `provider-account-${data.id}`,
     _type: ACCOUNT_ENTITY_TYPE,
     accountId: data.id,
-    displayName: data.name
+    displayName: data.name,
   };
 }
 
@@ -33,7 +33,7 @@ export function createUserEntities(data: User[]): UserEntity[] {
     _key: `provider-user-${d.id}`,
     _type: USER_ENTITY_TYPE,
     displayName: `${d.firstName} ${d.lastName}`,
-    userId: d.id
+    userId: d.id,
   }));
 }
 
@@ -44,14 +44,14 @@ export function createDeviceEntities(data: Device[]): DeviceEntity[] {
     _type: DEVICE_ENTITY_TYPE,
     deviceId: d.id,
     displayName: d.manufacturer,
-    ownerId: d.ownerId
+    ownerId: d.ownerId,
   }));
 }
 
 export function createAccountRelationships(
   account: AccountEntity,
   entities: EntityFromIntegration[],
-  type: string
+  type: string,
 ) {
   const relationships = [];
   for (const entity of entities) {
@@ -64,20 +64,20 @@ export function createAccountRelationships(
 export function createAccountRelationship(
   account: AccountEntity,
   entity: EntityFromIntegration,
-  type: string
+  type: string,
 ): RelationshipFromIntegration {
   return {
     _class: "HAS",
     _fromEntityKey: account._key,
     _key: `${account._key}_has_${entity._key}`,
     _toEntityKey: entity._key,
-    _type: type
+    _type: type,
   };
 }
 
 export function createUserDeviceRelationships(
   users: UserEntity[],
-  devices: DeviceEntity[]
+  devices: DeviceEntity[],
 ) {
   const usersById: { [id: string]: UserEntity } = {};
   for (const user of users) {
@@ -95,13 +95,13 @@ export function createUserDeviceRelationships(
 
 function createUserDeviceRelationship(
   user: UserEntity,
-  device: DeviceEntity
+  device: DeviceEntity,
 ): RelationshipFromIntegration {
   return {
     _class: USER_DEVICE_RELATIONSHIP_CLASS,
     _fromEntityKey: user._key,
     _key: `${user._key}_has_${device._key}`,
     _toEntityKey: device._key,
-    _type: USER_DEVICE_RELATIONSHIP_TYPE
+    _type: USER_DEVICE_RELATIONSHIP_TYPE,
   };
 }

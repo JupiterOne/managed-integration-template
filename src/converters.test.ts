@@ -3,7 +3,7 @@ import {
   createAccountRelationships,
   createDeviceEntities,
   createUserDeviceRelationships,
-  createUserEntities
+  createUserEntities,
 } from "./converters";
 import { Account, Device, User } from "./ProviderClient";
 import {
@@ -13,28 +13,28 @@ import {
   USER_DEVICE_RELATIONSHIP_CLASS,
   USER_DEVICE_RELATIONSHIP_TYPE,
   USER_ENTITY_CLASS,
-  USER_ENTITY_TYPE
+  USER_ENTITY_TYPE,
 } from "./types";
 
 const account: Account = {
   id: "account-1",
-  name: "account-name"
+  name: "account-name",
 };
 
 const users: User[] = [
   {
     firstName: "fname",
     id: "user-1",
-    lastName: "lname"
-  }
+    lastName: "lname",
+  },
 ];
 
 const devices: Device[] = [
   {
     id: "device-1",
     manufacturer: "man-1",
-    ownerId: "user-1"
-  }
+    ownerId: "user-1",
+  },
 ];
 
 test("createAccountRelationships", () => {
@@ -45,16 +45,16 @@ test("createAccountRelationships", () => {
     createAccountRelationships(
       accountEntity,
       userEntities,
-      ACCOUNT_USER_RELATIONSHIP_TYPE
-    )
+      ACCOUNT_USER_RELATIONSHIP_TYPE,
+    ),
   ).toEqual([
     {
       _class: "HAS",
       _fromEntityKey: "provider-account-account-1",
       _key: "provider-account-account-1_has_provider-user-user-1",
       _toEntityKey: "provider-user-user-1",
-      _type: ACCOUNT_USER_RELATIONSHIP_TYPE
-    }
+      _type: ACCOUNT_USER_RELATIONSHIP_TYPE,
+    },
   ]);
 });
 
@@ -65,8 +65,8 @@ test("createUserEntities", () => {
       _key: "provider-user-user-1",
       _type: USER_ENTITY_TYPE,
       displayName: "fname lname",
-      userId: "user-1"
-    }
+      userId: "user-1",
+    },
   ]);
 });
 
@@ -78,8 +78,8 @@ test("createDeviceEntities", () => {
       _type: DEVICE_ENTITY_TYPE,
       deviceId: "device-1",
       displayName: "man-1",
-      ownerId: "user-1"
-    }
+      ownerId: "user-1",
+    },
   ]);
 });
 
@@ -92,7 +92,7 @@ test("createUserDeviceRelationships", () => {
       _fromEntityKey: "provider-user-user-1",
       _key: `provider-user-user-1_has_provider-device-id-device-1`,
       _toEntityKey: "provider-device-id-device-1",
-      _type: USER_DEVICE_RELATIONSHIP_TYPE
-    }
+      _type: USER_DEVICE_RELATIONSHIP_TYPE,
+    },
   ]);
 });
