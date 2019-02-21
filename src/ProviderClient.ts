@@ -19,7 +19,7 @@ export default class ProviderClient {
   public async fetchAccountDetails(): Promise<Account> {
     return {
       id: "account-a",
-      name: "Account A"
+      name: "Account A",
     };
   }
 
@@ -28,13 +28,13 @@ export default class ProviderClient {
       {
         id: "device-a",
         manufacturer: "Manufacturer A",
-        ownerId: "user-a"
+        ownerId: "user-a",
       },
       {
         id: "device-b",
         manufacturer: "Manufacturer B",
-        ownerId: "user-b"
-      }
+        ownerId: "user-b",
+      },
     ];
   }
 
@@ -43,13 +43,13 @@ export default class ProviderClient {
       {
         firstName: "User",
         id: "user-a",
-        lastName: "A"
+        lastName: "A",
       },
       {
         firstName: "User",
         id: "user-b",
-        lastName: "B"
-      }
+        lastName: "B",
+      },
     ];
   }
 }

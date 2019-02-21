@@ -1,7 +1,7 @@
 /* tslint:disable:no-console */
 import {
   createLocalInvocationEvent,
-  executeSingleHandlerLocal
+  executeSingleHandlerLocal,
 } from "@jupiterone/jupiter-managed-integration-sdk/local";
 import { createLogger, TRACE } from "bunyan";
 import { executionHandler } from "../src/index";
@@ -18,9 +18,9 @@ async function run(): Promise<void> {
       integrationConfig,
       logger,
       executionHandler,
-      createLocalInvocationEvent()
+      createLocalInvocationEvent(),
     ),
-    "Execution completed successfully!"
+    "Execution completed successfully!",
   );
 }
 
