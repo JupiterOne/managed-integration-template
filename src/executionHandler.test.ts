@@ -32,9 +32,12 @@ test("executionHandler", async () => {
 
   (initializeContext as jest.Mock).mockReturnValue(executionContext);
 
-  await executionHandler({} as IntegrationExecutionContext<
+  const invocationContext = {} as IntegrationExecutionContext<
     IntegrationInvocationEvent
-  >);
+  >;
+  await executionHandler(invocationContext);
+
+  expect(initializeContext).toHaveBeenCalledWith(invocationContext);
 
   expect(executionContext.graph.findEntitiesByType).toHaveBeenCalledWith(
     USER_ENTITY_TYPE,
@@ -46,6 +49,9 @@ test("executionHandler", async () => {
     USER_DEVICE_RELATIONSHIP_TYPE,
   );
 
+  expect(executionContext.provider.fetchAccountDetails).toHaveBeenCalledTimes(
+    1,
+  );
   expect(executionContext.provider.fetchUsers).toHaveBeenCalledTimes(1);
   expect(executionContext.provider.fetchDevices).toHaveBeenCalledTimes(1);
 
