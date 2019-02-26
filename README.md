@@ -1,5 +1,7 @@
 # JupiterOne Managed Integration Example
 
+[![Build Status](https://travis-ci.org/JupiterOne/managed-integration-example.svg?branch=master)](https://travis-ci.org/JupterOne/managed-integration-example)
+
 A JupiterOne integration ingests information such as configurations and other
 metadata about digital and physical assets belonging to an organization. The
 integration is responsible for connecting to data provider APIs and determining
@@ -18,8 +20,7 @@ decrypted before it is delivered to the integration execution handler.
 Currently, the integration instance configuration user interface will need code
 changes to collect necessary information.
 
-Local execution of the integration is started through `execute.ts` (`yarn
-start`), which may be changed to load development credentials into the
+Local execution of the integration is started through `execute.ts` (`yarn start`), which may be changed to load development credentials into the
 `IntegrationInstance.config`. Use environment variables to avoid publishing
 sensitive information to GitHub!
 
@@ -57,7 +58,7 @@ with no existing data:
 
 ### Environment Variables
 
-* `GRAPH_DB_ENDPOINT` - `"localhost"`
+- `GRAPH_DB_ENDPOINT` - `"localhost"`
 
 ### Running tests
 
