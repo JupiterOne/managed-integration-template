@@ -15,7 +15,8 @@
     "build:files": "ts-node tools/copy-dist-files.ts",
     "build:types": "tsc --project tsconfig.dist.json --declaration --emitDeclarationOnly",
     "lint": "tslint --project . --fix",
-    "pretest": "yarn lint",
+    "format": "prettier --write '**/*.{ts,js,json,md}'",
+    "pretest": "lint",
     "test": "jest"
   },
   "dependencies": {

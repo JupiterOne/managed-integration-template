@@ -20,7 +20,8 @@ decrypted before it is delivered to the integration execution handler.
 Currently, the integration instance configuration user interface will need code
 changes to collect necessary information.
 
-Local execution of the integration is started through `execute.ts` (`yarn start`), which may be changed to load development credentials into the
+Local execution of the integration is started through `execute.ts`
+(`yarn start`), which may be changed to load development credentials into the
 `IntegrationInstance.config`. Use environment variables to avoid publishing
 sensitive information to GitHub!
 
@@ -31,9 +32,12 @@ provider. Developing an integration involves:
 
 1.  Establishing a secure connection to a provider API
 2.  Fetching provider data and converting it to entities and relationships
-3.  Collecting the existing set of entities and relationships already in the graph
-4.  Performing a diff to determine which entites/relationships to create/update/delete
-5.  Delivering create/update/delete operations to the persister to update the graph
+3.  Collecting the existing set of entities and relationships already in the
+    graph
+4.  Performing a diff to determine which entites/relationships to
+    create/update/delete
+5.  Delivering create/update/delete operations to the persister to update the
+    graph
 
 This example integration hand waves 1 and 2a 🤪. The rest of it is serious
 business. Run the integration to see what happens:
