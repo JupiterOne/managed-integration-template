@@ -31,21 +31,21 @@ Integrations mutate the graph to reflect configurations and metadata from the
 provider. Developing an integration involves:
 
 1.  Establishing a secure connection to a provider API
-2.  Fetching provider data and converting it to entities and relationships
-3.  Collecting the existing set of entities and relationships already in the
+1.  Fetching provider data and converting it to entities and relationships
+1.  Collecting the existing set of entities and relationships already in the
     graph
-4.  Performing a diff to determine which entites/relationships to
+1.  Performing a diff to determine which entites/relationships to
     create/update/delete
-5.  Delivering create/update/delete operations to the persister to update the
+1.  Delivering create/update/delete operations to the persister to update the
     graph
 
 This example integration hand waves 1 and 2a 🤪. The rest of it is serious
 business. Run the integration to see what happens:
 
 1.  Install Docker
-2.  `yarn install`
-3.  `yarn start:graph`
-4.  `yarn start`
+1.  `yarn install`
+1.  `yarn start:graph`
+1.  `yarn start`
 
 Activity is logged to the console indicating the operations produced and
 processed. View raw data in the graph database using
@@ -58,7 +58,7 @@ Restart the graph server to clear the data when you want to run the integration
 with no existing data:
 
 1.  `yarn stop:graph`
-2.  `yarn start:graph`
+1.  `yarn start:graph`
 
 ### Environment Variables
 
