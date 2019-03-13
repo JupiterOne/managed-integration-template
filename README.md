@@ -25,6 +25,31 @@ Local execution of the integration is started through `execute.ts`
 `IntegrationInstance.config`. Use environment variables to avoid publishing
 sensitive information to GitHub!
 
+## Documentation
+
+Integration projects must provide documentation for docs.jupiterone.io. This
+documentation should outline the credentials required by the data provider API
+(including specific permissions if the data provider allows scoping of
+credentials), which entities are ingested, and what relationships are created.
+At build time, this documentation will be placed in a docs folder inside dist so
+that it's included in the NPM module.
+
+The documentation should be placed in `docs/jupiterone-io` and named after the
+package. For example, an AWS integration with the name "jupiter-integration-aws"
+in `package.json` should have its documentation in
+`docs/jupiterone-io/jupiter-integration-aws.md`. Any other files in
+`docs/jupiterone-io` will not be published. Also note that namespace is ignored,
+so "jupiter-integration-aws" and "@jupiterone/jupiter-integration-aws" should
+both name their docs file the same.
+
+The first header in the documentation is used as the title of the document in
+the table of contents on docs.jupiterone.io, so it should be the name of the
+provider (E.G. "AWS").
+
+The documentation is pushed to docs.jupiterone.io every time a new version of
+the integration is specified in `package.json`, so make sure it's up to date
+every time you release a new version.
+
 ## Development Environment
 
 Integrations mutate the graph to reflect configurations and metadata from the
@@ -39,7 +64,7 @@ provider. Developing an integration involves:
 1.  Delivering create/update/delete operations to the persister to update the
     graph
 
-This example integration hand waves 1 and 2a 🤪. The rest of it is serious
+This example integration hand waves 1 and 2a. 🤪 The rest of it is serious
 business. Run the integration to see what happens:
 
 1.  Install Docker
