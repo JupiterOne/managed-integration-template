@@ -16,8 +16,6 @@ specific integration instance.
 Example Provider provides [detailed instructions on creating an API token][1]
 within your Example Provider account.
 
-[1]: https://jupiterone.io/
-
 ## Entities
 
 The following entity resources are ingested when the integration runs:
@@ -31,6 +29,6 @@ The following entity resources are ingested when the integration runs:
 
 The following relationships are created/mapped:
 
-### Basic relationships within the integration instance account/resources
-
 | | -- | `example_account` **HAS** `example_application`
+
+[1]: https://jupiterone.io/
