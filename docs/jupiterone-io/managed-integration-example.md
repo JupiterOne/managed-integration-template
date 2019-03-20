@@ -29,6 +29,8 @@ The following entity resources are ingested when the integration runs:
 
 The following relationships are created/mapped:
 
-| | -- | `example_account` **HAS** `example_application`
+| From              | Type    | To                    |
+| ----------------- | ------- | --------------------- |
+| `example_account` | **HAS** | `example_application` |
 
 [1]: https://jupiterone.io/
