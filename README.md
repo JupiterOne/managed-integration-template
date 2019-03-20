@@ -64,8 +64,8 @@ provider. Developing an integration involves:
 1.  Delivering create/update/delete operations to the persister to update the
     graph
 
-This example integration hand waves 1 and 2a. 🤪 The rest of it is serious
-business. Run the integration to see what happens:
+Run the integration to see what happens. You may use use Node to execute
+directly on your machine (NVM is recommended).
 
 1.  Install Docker
 1.  `yarn install`
@@ -80,10 +80,11 @@ Execute the integration again to see that there are no change operations
 produced.
 
 Restart the graph server to clear the data when you want to run the integration
-with no existing data:
+with no existing data.
 
-1.  `yarn stop:graph`
-1.  `yarn start:graph`
+```sh
+yarn stop:graph && yarn start:graph
+```
 
 ### Environment Variables
 
@@ -137,7 +138,7 @@ and conversion from provider data to entities and relationships.
 
 To run tests locally:
 
-```shell
+```sh
 yarn test
 ```
 
@@ -147,6 +148,6 @@ Managed integrations are deployed into the JupiterOne infrastructure by staff
 engineers using internal projects that declare a dependency on the open source
 integration NPM package. The package will be published by the JupiterOne team.
 
-```shell
+```sh
 yarn build:publish
 ```
