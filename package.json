@@ -66,19 +66,22 @@
     }
   },
   "lint-staged": {
-    "*.md": [
-      "remark .",
-      "prettier --write",
-      "git add"
-    ],
-    "*.ts": [
-      "tslint --project .",
-      "prettier --write",
-      "git add"
-    ],
-    "*.{js,json}": [
-      "prettier --write",
-      "git add"
-    ]
+    "linters": {
+      "*.md": [
+        "remark .",
+        "prettier --write",
+        "git add"
+      ],
+      "*.ts": [
+        "tslint --project .",
+        "prettier --write",
+        "git add"
+      ],
+      "*.{js,json}": [
+        "prettier --write",
+        "git add"
+      ]
+    },
+    "ignore": []
   }
 }
