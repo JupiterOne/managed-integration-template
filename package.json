@@ -2,7 +2,7 @@
   "name": "@jupiterone/managed-integration-example",
   "version": "0.1.0",
   "description": "An example JupiterOne managed integration.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "repository": "https://github.com/JupiterOne/managed-integration-example",
   "license": "SEE LICENSE IN LICENSE",
   "files": [
