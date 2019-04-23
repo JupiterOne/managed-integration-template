@@ -1,7 +1,6 @@
 import {
   IntegrationExecutionContext,
   IntegrationExecutionResult,
-  IntegrationInvocationEvent,
 } from "@jupiterone/jupiter-managed-integration-sdk";
 import {
   createAccountEntity,
@@ -25,7 +24,7 @@ import {
 } from "./types";
 
 export default async function executionHandler(
-  context: IntegrationExecutionContext<IntegrationInvocationEvent>,
+  context: IntegrationExecutionContext,
 ): Promise<IntegrationExecutionResult> {
   const { graph, persister, provider } = initializeContext(context);
 

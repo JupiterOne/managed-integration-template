@@ -2,7 +2,6 @@ import {
   EntityFromIntegration,
   GraphClient,
   IntegrationExecutionContext,
-  IntegrationInvocationEvent,
   PersisterClient,
 } from "@jupiterone/jupiter-managed-integration-sdk";
 import ProviderClient from "./ProviderClient";
@@ -34,8 +33,7 @@ export interface DeviceEntity extends EntityFromIntegration {
   ownerId: string;
 }
 
-export interface ExampleExecutionContext
-  extends IntegrationExecutionContext<IntegrationInvocationEvent> {
+export interface ExampleExecutionContext extends IntegrationExecutionContext {
   graph: GraphClient;
   persister: PersisterClient;
   provider: ProviderClient;
