@@ -15,7 +15,9 @@ debugging Jest tests][2].
       "type": "node",
       "request": "launch",
       "name": "Execute Integration Local",
+      "runtimeVersion": "8.10.0",
       "program": "${workspaceFolder}/tools/execute.ts",
+      "envFile": "${workspaceFolder}/.env",
       "preLaunchTask": "tsc: build - tsconfig.json",
       "sourceMaps": true,
       "outFiles": ["${workspaceFolder}/build/**/*.js"]
