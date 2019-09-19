@@ -16,8 +16,9 @@ import { IntegrationValidationContext } from "@jupiterone/jupiter-managed-integr
  * @param context
  */
 export default async function invocationValidator(
-  context: IntegrationValidationContext,
-) {
+  /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
+  _context: IntegrationValidationContext,
+): Promise<void> {
   // const { config } = context.instance;
   // if (!config.providerAPIKey) {
   //   throw new IntegrationInstanceConfigError('providerAPIKey missing in config');

@@ -91,20 +91,18 @@ export default async function executionHandler(
   };
 }
 
-async function fetchAccountEntitiesFromProvider(
+function fetchAccountEntitiesFromProvider(
   provider: ProviderClient,
-): Promise<AccountEntity[]> {
-  return [createAccountEntity(await provider.fetchAccountDetails())];
+): AccountEntity[] {
+  return [createAccountEntity(provider.fetchAccountDetails())];
 }
 
-async function fetchUserEntitiesFromProvider(
-  provider: ProviderClient,
-): Promise<UserEntity[]> {
-  return createUserEntities(await provider.fetchUsers());
+function fetchUserEntitiesFromProvider(provider: ProviderClient): UserEntity[] {
+  return createUserEntities(provider.fetchUsers());
 }
 
-async function fetchDeviceEntitiesFromProvider(
+function fetchDeviceEntitiesFromProvider(
   provider: ProviderClient,
-): Promise<DeviceEntity[]> {
-  return createDeviceEntities(await provider.fetchDevices());
+): DeviceEntity[] {
+  return createDeviceEntities(provider.fetchDevices());
 }

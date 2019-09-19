@@ -16,14 +16,14 @@ export interface Device {
 }
 
 export default class ProviderClient {
-  public async fetchAccountDetails(): Promise<Account> {
+  public fetchAccountDetails(): Account {
     return {
       id: "account-a",
       name: "Account A",
     };
   }
 
-  public async fetchDevices(): Promise<Device[]> {
+  public fetchDevices(): Device[] {
     return [
       {
         id: "device-a",
@@ -38,7 +38,7 @@ export default class ProviderClient {
     ];
   }
 
-  public async fetchUsers(): Promise<User[]> {
+  public fetchUsers(): User[] {
     return [
       {
         firstName: "User",

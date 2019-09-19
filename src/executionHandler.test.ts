@@ -10,7 +10,7 @@ import {
 jest.mock("./initializeContext");
 
 test("executionHandler", async () => {
-  const executionContext: any = {
+  const executionContext = {
     graph: {
       findEntitiesByType: jest.fn().mockResolvedValue([]),
       findRelationshipsByType: jest.fn().mockResolvedValue([]),
@@ -21,9 +21,9 @@ test("executionHandler", async () => {
       publishPersisterOperations: jest.fn().mockResolvedValue({}),
     },
     provider: {
-      fetchAccountDetails: jest.fn().mockResolvedValue({}),
-      fetchDevices: jest.fn().mockResolvedValue([]),
-      fetchUsers: jest.fn().mockResolvedValue([]),
+      fetchAccountDetails: jest.fn().mockReturnValue({}),
+      fetchDevices: jest.fn().mockReturnValue([]),
+      fetchUsers: jest.fn().mockReturnValue([]),
     },
   };
 
