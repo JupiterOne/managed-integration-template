@@ -20,5 +20,5 @@ deploy:
   on:
     tags: true
     branch: master
-    repo: JupiterOne/managed-integration-example
+    repo: JupiterOne/graph-template
     node: '8'

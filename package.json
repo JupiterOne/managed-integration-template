@@ -1,9 +1,9 @@
 {
-  "name": "@jupiterone/managed-integration-example",
+  "name": "@jupiterone/graph-template",
   "version": "0.1.0",
-  "description": "An example JupiterOne managed integration.",
+  "description": "A template for JupiterOne graph converters.",
   "main": "dist/index.js",
-  "repository": "https://github.com/JupiterOne/managed-integration-example",
+  "repository": "https://github.com/JupiterOne/graph-template",
   "license": "SEE LICENSE IN LICENSE",
   "files": [
     "LICENSE",
@@ -21,9 +21,9 @@
     "build:src": "babel src --extensions '.ts' --out-dir dist",
     "build:docs": "ts-node tools/docs.ts",
     "build:types": "tsc --project tsconfig.dist.json --declaration --emitDeclarationOnly",
-    "lint": "yarn lint:ts && yarn lint:md",
+    "lint": "yarn lint:es && yarn lint:md",
     "lint:md": "remark .",
-    "lint:ts": "tslint --project .",
+    "lint:es": "eslint . --ext .ts --ignore-pattern dist",
     "format": "yarn prettier --write '**/*.{ts,js,json,md}'",
     "test": "jest"
   },
@@ -43,8 +43,12 @@
     "@types/fs-extra": "^7.0.0",
     "@types/jest": "^24.0.0",
     "@types/node": "~8.10.0",
+    "@typescript-eslint/eslint-plugin": "^2.3.0",
+    "@typescript-eslint/parser": "^2.3.0",
     "bunyan": "^1.8.12",
     "dotenv": "^8.0.0",
+    "eslint": "^6.4.0",
+    "eslint-config-prettier": "^6.3.0",
     "fs-extra": "^8.0.1",
     "husky": "^2.3.0",
     "jest": "^24.0.0",
@@ -59,32 +63,6 @@
     "remark-preset-lint-recommended": "^3.0.2",
     "ts-jest": "^24.0.0",
     "ts-node": "^8.1.0",
-    "tslint": "^5.12.1",
-    "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.4.5"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "linters": {
-      "*.md": [
-        "remark .",
-        "prettier --write",
-        "git add"
-      ],
-      "*.ts": [
-        "tslint --project .",
-        "prettier --write",
-        "git add"
-      ],
-      "*.{js,json}": [
-        "prettier --write",
-        "git add"
-      ]
-    },
-    "ignore": []
   }
 }

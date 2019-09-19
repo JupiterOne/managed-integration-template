@@ -48,19 +48,6 @@ export function createDeviceEntities(data: Device[]): DeviceEntity[] {
   }));
 }
 
-export function createAccountRelationships(
-  account: AccountEntity,
-  entities: EntityFromIntegration[],
-  type: string,
-) {
-  const relationships = [];
-  for (const entity of entities) {
-    relationships.push(createAccountRelationship(account, entity, type));
-  }
-
-  return relationships;
-}
-
 export function createAccountRelationship(
   account: AccountEntity,
   entity: EntityFromIntegration,
@@ -75,19 +62,14 @@ export function createAccountRelationship(
   };
 }
 
-export function createUserDeviceRelationships(
-  users: UserEntity[],
-  devices: DeviceEntity[],
-) {
-  const usersById: { [id: string]: UserEntity } = {};
-  for (const user of users) {
-    usersById[user.userId] = user;
-  }
-
+export function createAccountRelationships(
+  account: AccountEntity,
+  entities: EntityFromIntegration[],
+  type: string,
+): RelationshipFromIntegration[] {
   const relationships = [];
-  for (const device of devices) {
-    const user = usersById[device.ownerId];
-    relationships.push(createUserDeviceRelationship(user, device));
+  for (const entity of entities) {
+    relationships.push(createAccountRelationship(account, entity, type));
   }
 
   return relationships;
@@ -104,4 +86,22 @@ function createUserDeviceRelationship(
     _toEntityKey: device._key,
     _type: USER_DEVICE_RELATIONSHIP_TYPE,
   };
+}
+
+export function createUserDeviceRelationships(
+  users: UserEntity[],
+  devices: DeviceEntity[],
+): RelationshipFromIntegration[] {
+  const usersById: { [id: string]: UserEntity } = {};
+  for (const user of users) {
+    usersById[user.userId] = user;
+  }
+
+  const relationships = [];
+  for (const device of devices) {
+    const user = usersById[device.ownerId];
+    relationships.push(createUserDeviceRelationship(user, device));
+  }
+
+  return relationships;
 }
