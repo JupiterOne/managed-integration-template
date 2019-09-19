@@ -1,9 +1,9 @@
 {
-  "name": "@jupiterone/managed-integration-example",
+  "name": "@jupiterone/graph-template",
   "version": "0.1.0",
-  "description": "An example JupiterOne managed integration.",
+  "description": "A template for JupiterOne graph converters.",
   "main": "dist/index.js",
-  "repository": "https://github.com/JupiterOne/managed-integration-example",
+  "repository": "https://github.com/JupiterOne/graph-template",
   "license": "SEE LICENSE IN LICENSE",
   "files": [
     "LICENSE",
