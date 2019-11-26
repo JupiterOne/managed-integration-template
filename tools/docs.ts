@@ -1,32 +1,21 @@
 import fs from "fs-extra";
+import pkg from "../package.json";
 
-const pkg = JSON.parse(fs.readFileSync("package.json", "utf8"));
+const docsPath = `docs/jupiterone-io/index.md`;
 
-const packageNameSansOrg = pkg.name.split("/").pop();
-const baseDocsPath = `docs/jupiterone-io/${packageNameSansOrg}`;
-
-let docsExtension;
-if (fs.pathExistsSync(`${baseDocsPath}.md`)) {
-  docsExtension = "md";
-} else if (fs.pathExistsSync(`${baseDocsPath}.rst`)) {
-  docsExtension = "rst";
-}
-
-if (docsExtension !== undefined) {
-  fs.copySync(
-    `${baseDocsPath}.${docsExtension}`,
-    `dist/docs/${packageNameSansOrg}.${docsExtension}`,
-  );
-  fs.writeFileSync(
-    "dist/docs/metadata.json",
-    JSON.stringify(
-      {
-        version: pkg.version,
-      },
-      null,
-      2,
-    ),
-  );
-} else {
+if (!fs.pathExistsSync(docsPath)) {
   throw new Error("No documentation found!");
 }
+
+fs.copySync(docsPath, `dist/docs/index.md`);
+
+fs.writeFileSync(
+  "dist/docs/metadata.json",
+  JSON.stringify(
+    {
+      version: pkg.version,
+    },
+    null,
+    2,
+  ),
+);

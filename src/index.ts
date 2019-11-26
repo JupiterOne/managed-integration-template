@@ -8,4 +8,4 @@ const invocationConfig: IntegrationInvocationConfig = {
   invocationValidator,
 };
 
-export default invocationConfig;
+export { invocationConfig };
