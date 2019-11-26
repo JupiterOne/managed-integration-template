@@ -15,9 +15,8 @@ debugging Jest tests][2].
       "type": "node",
       "request": "launch",
       "name": "Execute Integration Local",
-      "runtimeVersion": "8.10.0",
       "program": "${workspaceFolder}/tools/execute.ts",
-      "envFile": "${workspaceFolder}/.env",
+      "runtimeArgs": ["-r", "dotenv/config"],
       "preLaunchTask": "tsc: build - tsconfig.json",
       "sourceMaps": true,
       "outFiles": ["${workspaceFolder}/build/**/*.js"]
@@ -40,7 +39,12 @@ debugging Jest tests][2].
       "request": "launch",
       "name": "Jest Current File",
       "program": "${workspaceFolder}/node_modules/.bin/jest",
-      "args": ["${fileBasenameNoExtension}", "--config", "jest.config.js"],
+      "args": [
+        "${fileBasenameNoExtension}",
+        "--config",
+        "jest.config.js",
+        "--no-coverage"
+      ],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
       "disableOptimisticBPs": true,
