@@ -2,9 +2,12 @@
   "name": "@jupiterone/graph-template",
   "version": "0.1.0",
   "description": "A template for JupiterOne graph converters.",
-  "main": "dist/index.js",
-  "repository": "https://github.com/JupiterOne/graph-template",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JupiterOne/graph-template-deprecated"
+  },
   "license": "SEE LICENSE IN LICENSE",
+  "main": "dist/index.js",
   "files": [
     "LICENSE",
     "dist"
